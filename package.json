@@ -1,0 +1,31 @@
+{
+  "name": "jogo-da-velha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nati3054/Jogo-Da-Velha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nati3054/Jogo-Da-Velha/issues"
+  },
+  "homepage": "https://github.com/nati3054/Jogo-Da-Velha#readme",
+  "dependencies": {
+    "node": "^22.21.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.0",
+    "vite": "^7.1.12"
+  }
+}
