@@ -10,17 +10,26 @@ export default function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
 
-  const winner = calculateWinner(squares);
+ const winner = calculateWinner(squares);
+  const isTie = !winner && squares.every(square => square !== null);
+  
   let status;
+  let statusClass = "status";
+  
   if (winner) {
-    status = "Vencedor: " + winner;
+    status = `🎉 Vencedor: ${winner}!`;
+    statusClass = "status status-winner";
+  } else if (isTie) {
+    status = "🤝 Empate!";
+    statusClass = "status status-tie";
   } else {
-    status = "Próximo jogador: " + (xIsNext ? "X" : "O");
+    status = `Próximo jogador: ${xIsNext ? "X" : "O"}`;
+    statusClass = "status status-playing";
   }
 
   return (
     <>
-      <div className="status">{status}</div>
+      <div className={statusClass}>{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />

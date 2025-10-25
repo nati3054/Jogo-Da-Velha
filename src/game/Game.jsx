@@ -17,23 +17,36 @@ export default function Game() {
     setCurrentMove(move);
   }
 
+function resetGame() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+}
+
   const moves = history.map((squares, move) => {
-    const desc = move > 0 ? "Ir para o movimento #" + move : "Ir para o início do jogo";
+    let description;
+    if (move === 0) {
+      description = 'Ir para o início do jogo';
+    } else {
+      description = 'Ir para jogada #' + move;
+    }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
+        <button onClick={() => move === 0 ? resetGame() : jumpTo(move)}>
+          {description}
+        </button>
       </li>
     );
   });
 
   return (
     <div className="game">
-      <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-      </div>
-      <div className="game-info">
-        <ol>{moves}</ol>
-      </div>
+        <div className="game-board">
+            <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+            </div>
+            <div className="game-info">
+            <h2>Histórico de Jogadas</h2>
+            <ol>{moves}</ol>
+        </div>
     </div>
   );
 }

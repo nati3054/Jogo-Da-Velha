@@ -1,57 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-.app h1 {
-  color: #333;
-  margin-bottom: 20px;
+.app {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
 }
 
-.square {
-  background: #fff;
-  border: 2px solid #999;
-  float: left;
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 64px;
-  height: 64px;
-  margin-right: -2px;
-  margin-top: -2px;
-  padding: 0;
-  text-align: center;
-  width: 64px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.square:hover {
-  background: #e9ecef;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.status {
-  margin‐bottom: 10px;
-  font‐size: 18px;
-  font‐weight: bold;
+h1 {
+    color: #667eea;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
 }
 
 .game {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.game-board {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.status {
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.board-row {
+    display: flex;
+}
+
+.square {
+    background: #ffffff;
+    border: none;
+    font-size: 2.5em;
+    font-weight: bold;
+    height: 90px;
+    width: 90px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #667eea;
+    margin: 4px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.square:hover:not(:disabled) {
+    background: #f0f4ff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.square:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.square:disabled {
+    cursor: not-allowed;
 }
 
 .game-info {
-  margin-left: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+}
+
+.game-info h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.game-info ol {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.game-info li {
+    margin: 8px 0;
+}
+
+.game-info button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.game-info button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.game-info button:active {
+    transform: translateY(0);
+}
+
+.game-info button.move-button {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Scrollbar personalizada */
+.game-info ol::-webkit-scrollbar {
+    width: 8px;
+}
+
+.game-info ol::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.game-info ol::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.game-info ol::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+@media (max-width: 768px) {
+    .app {
+    padding: 20px;
+    }
+
+    h1 {
+    font-size: 2em;
+    }
+
+    .game {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .square {
+    height: 70px;
+    width: 70px;
+    font-size: 2em;
+    }
 }
